@@ -1,49 +1,273 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cat 🐱</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            cursor: default;
-        }
-        #cat {
-            position: absolute;
-            font-size: 40px;
-            pointer-events: none;
-            transition: transform 0.1s ease;
-        }
-    </style>
-</head>
-<body>
-    <div id="cat">🐱</div>
-
-    <script>
-        const cat = document.getElementById('cat');
-        let mouseX = 0;
-        let mouseY = 0;
-        let catX = 0;
-        let catY = 0;
-        const speed = 0.1;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function updateCatPosition() {
-            catX += (mouseX - catX - 20) * speed;
-            catY += (mouseY - catY - 20) * speed;
-            cat.style.transform = `translate(${catX}px, ${catY}px)`;
-            requestAnimationFrame(updateCatPosition);
-        }
-
-        updateCatPosition();
-    </script>
-</body>
+<!doctype html>
+<html class="light" lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>bisco</title>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#136dec",
+                            "background-light": "#f6f7f8",
+                            "background-dark": "#101822",
+                            "apple-gray": "#F2F2F7",
+                            "apple-gray-dark": "#1C1C1E",
+                            "apple-border": "#E5E5E5",
+                        },
+                        fontFamily: {
+                            display: ["Inter", "sans-serif"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            "2xl": "1rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAdnQiD4xYDu_prm0f6Lk6AmRZ-2HhEI8bfW_MYCtUvnsFTabHTpt-gEn4lCu2rgh5OVgcBe_sdgy88Na3oEFixxpK2qZ3oXTiz5ln-WrSLqxTtXyreWh3liVSX1jwciL0KIo8r1qmTR2oNyzgdeasxdmPMpruME1x4q4MpVb4halw6SH5LC6M1Xp6CGG6EgRpudziOvCpbGrW2cXsVAU2Fd0hsWeYhMbDsQpWfr0jKtA4g9rq_vCx6FcobyZvNgWhvhlUzBH-gwQw);
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .sidebar-active {
+                background-color: #136dec;
+                color: white !important;
+            }
+            .sidebar-active .material-symbols-outlined {
+                color: white !important;
+            }
+            .sidebar-active p {
+                color: white !important;
+            }
+        </style>
+    </head>
+    <body
+        class="flex items-center justify-center min-h-screen bg-gray-200 p-4 md:p-8 font-display text-[#111418]"
+    >
+        <div
+            class="relative w-full max-w-[1200px] h-[85vh] min-h-[700px] bg-white dark:bg-background-dark rounded-xl shadow-2xl flex overflow-hidden ring-1 ring-black/5"
+        >
+            <div
+                class="w-full md:w-[280px] bg-[#f7f7f8] dark:bg-[#1e1e1e] flex flex-col border-r border-gray-200 dark:border-gray-800 shrink-0 hidden md:flex"
+            >
+                <div class="h-14 flex items-center px-5 gap-2 shrink-0">
+                    <div
+                        class="w-3 h-3 rounded-full bg-[#FF5F57] border border-[#E0443E]"
+                    ></div>
+                    <div
+                        class="w-3 h-3 rounded-full bg-[#FEBC2E] border border-[#D89E24]"
+                    ></div>
+                    <div
+                        class="w-3 h-3 rounded-full bg-[#28C840] border border-[#1AAB29]"
+                    ></div>
+                </div>
+                <div class="px-4 pb-4">
+                    <div
+                        class="flex items-center bg-[#e3e3e5] dark:bg-[#2c2c2e] rounded-lg px-2 py-1.5"
+                    >
+                        <span
+                            class="material-symbols-outlined text-gray-500 text-[18px]"
+                            >search</span
+                        >
+                        <input
+                            class="bg-transparent border-none focus:ring-0 text-sm w-full text-[#111418] dark:text-white placeholder-gray-500 p-0 ml-2"
+                            placeholder="Поиск"
+                            type="text"
+                        />
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 px-2 overflow-y-auto flex-1">
+                    <div class="px-3 py-2 mt-2">
+                        <h2
+                            class="text-xs font-bold text-gray-400 uppercase tracking-wider"
+                        >
+                            iCloud
+                        </h2>
+                    </div>
+                    <a
+                        class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#e4e5e6] dark:hover:bg-[#2c2c2e] transition-colors group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:text-primary/80"
+                            >folder</span
+                        >
+                        <p
+                            class="text-[#111418] dark:text-white text-sm font-medium"
+                        >
+                            Все заметки
+                        </p>
+                    </a>
+                    <a
+                        class="sidebar-active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors shadow-sm"
+                        href="#"
+                    >
+                        <span class="material-symbols-outlined text-white"
+                            >person</span
+                        >
+                        <p class="text-white text-sm font-medium">Обо мне</p>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#e4e5e6] dark:hover:bg-[#2c2c2e] transition-colors group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:text-primary/80"
+                            >auto_awesome</span
+                        >
+                        <p
+                            class="text-[#111418] dark:text-white text-sm font-medium"
+                        >
+                            Проекты
+                        </p>
+                    </a>
+                    <a
+                        class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#e4e5e6] dark:hover:bg-[#2c2c2e] transition-colors group"
+                        href="#"
+                    >
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:text-primary/80"
+                            >mail</span
+                        >
+                        <p
+                            class="text-[#111418] dark:text-white text-sm font-medium"
+                        >
+                            Контакты
+                        </p>
+                    </a>
+                </div>
+                <div
+                    class="h-10 border-t border-gray-200 dark:border-gray-800 flex items-center justify-center"
+                >
+                    <p class="text-xs text-gray-400">3 заметки</p>
+                </div>
+            </div>
+            <div
+                class="flex-1 flex flex-col bg-white dark:bg-background-dark relative"
+            >
+                <div
+                    class="h-14 flex items-center justify-between px-4 md:px-6 shrink-0 z-10 bg-white/90 backdrop-blur-md dark:bg-background-dark/90 sticky top-0"
+                >
+                    <button
+                        class="md:hidden p-2 text-primary hover:bg-gray-100 rounded-lg"
+                    >
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <div class="hidden md:flex gap-1"></div>
+                    <div class="flex items-center gap-4 ml-auto">
+                        <button
+                            class="text-gray-400 hover:text-primary transition-colors"
+                            title="Grid View"
+                        >
+                            <span class="material-symbols-outlined font-light"
+                                >grid_view</span
+                            >
+                        </button>
+                        <button
+                            class="text-gray-400 hover:text-red-500 transition-colors"
+                            title="Delete"
+                        >
+                            <span class="material-symbols-outlined font-light"
+                                >delete</span
+                            >
+                        </button>
+                        <button
+                            class="text-primary hover:text-primary/80 transition-colors"
+                            title="New Note"
+                        >
+                            <span class="material-symbols-outlined font-light"
+                                >edit_square</span
+                            >
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="flex-1 overflow-y-auto scrollbar-hide px-4 md:px-12 lg:px-24 pb-20"
+                >
+                    <div class="max-w-[700px] mx-auto w-full">
+                        <div class="text-center py-6">
+                            <p class="text-xs text-gray-400 font-medium">
+                                17 декабря 2025 г. в 21:02
+                            </p>
+                        </div>
+                        <h1
+                            class="text-4xl md:text-5xl font-bold text-[#111418] dark:text-white tracking-tight mb-8"
+                        >
+                            привет
+                        </h1>
+                        <div
+                            class="space-y-6 text-[17px] leading-relaxed text-[#111418] dark:text-gray-200 font-normal"
+                        >
+                            <p>я биско</p>
+                            <p>мне нечего сказать о себе</p>
+                        </div>
+                        <div
+                            class="mt-8 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-100 dark:border-gray-700 flex items-center gap-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all group"
+                        >
+                            <div
+                                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:scale-110 transition-transform"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >image</span
+                                >
+                            </div>
+                            <div class="flex-1">
+                                <p
+                                    class="text-sm font-semibold text-[#111418] dark:text-white"
+                                >
+                                    obed.png
+                                </p>
+                                <p class="text-xs text-gray-500">
+                                    323 КБ • Изображение PNG
+                                </p>
+                            </div>
+                            <a
+                                class="p-2 hover:bg-white dark:hover:bg-gray-600 rounded-full transition-colors flex items-center justify-center cursor-pointer"
+                                download=""
+                                href="obed.png"
+                                title="Скачать файл"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-gray-400 group-hover:text-primary"
+                                    >download</span
+                                >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
